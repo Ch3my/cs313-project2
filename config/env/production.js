@@ -251,7 +251,7 @@ module.exports = {
     *                                                                          *
     ***************************************************************************/
     onlyAllowOrigins: [
-      'https://murmuring-chamber-19711.herokuapp.com/',
+      'https://murmuring-chamber-19711.herokuapp.com',
     ],
 
 
