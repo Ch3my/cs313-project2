@@ -250,10 +250,9 @@ module.exports = {
     * > Be sure to use the right protocol!  ("http://" vs. "https://")         *
     *                                                                          *
     ***************************************************************************/
-    // onlyAllowOrigins: [
-    //   'https://example.com',
-    //   'https://staging.example.com',
-    // ],
+    onlyAllowOrigins: [
+      'https://murmuring-chamber-19711.herokuapp.com/',
+    ],
 
 
     /***************************************************************************
@@ -322,7 +321,7 @@ module.exports = {
     * (https://sailsjs.com/config/http)                                        *
     *                                                                          *
     ***************************************************************************/
-    // trustProxy: true,
+    trustProxy: true,
 
   },
 
@@ -371,7 +370,7 @@ module.exports = {
   *                                                                         *
   ***************************************************************************/
   custom: {
-    baseUrl: 'https://example.com',
+    baseUrl: 'https://murmuring-chamber-19711.herokuapp.com/',
     internalEmailAddress: 'support@example.com',
 
     // mailgunDomain: 'mg.example.com',
