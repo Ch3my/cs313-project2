@@ -1,0 +1,46 @@
+<div id="tl-index" v-cloak>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h1>Todo Lists</h1>
+        <ul>
+          <li v-for="list in todoLists">{{list.title}}</li>
+        </ul>
+        <button type="button" class="btn btn-primary" @click="showCreateNewTodoListForm = true"
+          v-if="!showCreateNewTodoListForm">Create New
+          TodoList</button>
+        <ajax-form v-if="showCreateNewTodoListForm" :handle-parsing="handleParsingCreateNewTodoList"
+          @submitted="createNewTodoListSubmittedForm($event)" :syncing.sync="createNewTodoListSyncing"
+          action="createNewTodoList">
+          <div class="form-group">
+            <label>TodoList name</label>
+            <input type="text" class="form-control" v-model="createNewTodoListFormData.title">
+          </div>
+          <div class="form-group">
+            <label>TodoList Description</label>
+            <textarea class="form-control" rows="3" v-model="createNewTodoListFormData.description"></textarea>
+          </div>
+          <ajax-button :syncing="createNewTodoListSyncing" class="btn btn-primary">Save</ajax-button>
+        </ajax-form>
+      </div>
+      <div class="col-md-8">
+        <h1>Tasks</h1>
+        <button type="button" class="btn btn-primary" @click="showCreateNewTaskForm = true"
+          v-if="!showCreateNewTaskForm">Create New Task</button>
+        <ajax-form v-if="showCreateNewTaskForm" :handle-parsing="handleParsingCreateNewTask"
+          @submitted="createNewTaskSubmittedForm($event)" :syncing.sync="createNewTaskSyncing" action="createNewTask">
+          <div class="form-group">
+            <label>Task Description</label>
+            <textarea class="form-control" rows="3" v-model="createNewTaskFormData.description"></textarea>
+          </div>
+          <ajax-button :syncing="createNewTaskSyncing" class="btn btn-primary">Save</ajax-button>
+        </ajax-form>
+        <ul>
+          <li v-for="task in tasks">{{task.description}}</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+<%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>
