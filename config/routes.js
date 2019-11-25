@@ -20,6 +20,7 @@ module.exports.routes = {
   'GET /getTodoListTasks/:fk_todolist': { action:   'todolists/get-todolist-tasks' },
   'POST /createTodoList':    { action:   'todolists/create-new-todo-list' },
   'POST /createNewTask':    { action:   'todolists/create-new-task' },
+  'PUT /updateTask':        { action:   'todolists/update-task' },
 
   'GET /faq':                { view:   'pages/faq' },
   'GET /legal/terms':        { view:   'pages/legal/terms' },

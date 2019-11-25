@@ -59,6 +59,10 @@ parasails.registerPage('tl-index', {
       this.createNewTaskFormData = {}
       // close form
       this.showCreateNewTaskForm = false
+    },
+    toggleState: async function(element){
+      console.log(element.target.dataset.rowId)
+      await Cloud.updateTask.with({id: element.target.dataset.rowId})
     }
   }
 });
