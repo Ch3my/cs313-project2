@@ -49,7 +49,7 @@ module.exports.datastores = {
     *                                                                          *
     ***************************************************************************/
     adapter: 'sails-mysql',
-    url: 'mysql://joseconc_cs313:w2uJwbA5yAtDKMqX@joseconc.heliohost.org:3306/joseconc_cs313',
+    url: 'mysql://joseconc_cs313:w2uJwbA5yAtDKMqX@joseconc.heliohost.org:33066/joseconc_cs313',
 
   },
 
