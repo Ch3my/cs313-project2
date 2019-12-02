@@ -2,14 +2,22 @@
   .completed {
     text-decoration: line-through;
   }
-  </style>
+  .delete:hover{
+    color: red;
+  }
+  .delete {
+    color: gray
+  }
+</style>
 <div id="tl-index" v-cloak>
   <div class="container">
+    <h4>Here are your active todoLists {{me.fullName}}</h4>
     <div class="row">
       <div class="col-md-4">
-        <h1>Todo Lists</h1>
+        <h5>Todo Lists</h5>
         <ul>
-          <li v-for="list in todoLists" @click="getTodoListTasks(list.id)">{{list.title}} <i v-if="list.id == selectedTodoList" class="fa fa-check" ></i></li>
+          <li v-for="list in todoLists" @click="getTodoListTasks(list.id)">{{list.title}} <i
+              v-if="list.id == selectedTodoList" class="fa fa-check"></i></li>
         </ul>
         <button type="button" class="btn btn-primary" @click="showCreateNewTodoListForm = true"
           v-if="!showCreateNewTodoListForm">Create New
@@ -29,7 +37,15 @@
         </ajax-form>
       </div>
       <div class="col-md-8">
-        <h1>Tasks</h1>
+        <h5>Tasks</h5>
+        <ul>
+          <li v-for="task in tasks" style="list-style: none;" :data-task-id="task.id" :class="task.completed ? 'completed' : ''">
+            <input type="checkbox" name="" id="" :data-row-id="task.id" :data-row-completed="task.completed"
+              :checked="task.completed" @click="toggleState($event)">
+              <i class="fa fa-times-circle delete" @click="deleteTask(task.id)"></i>
+            {{task.description}}
+          </li>
+        </ul>
         <button type="button" class="btn btn-primary" @click="showCreateNewTaskForm = true"
           v-if="!showCreateNewTaskForm">Create New Task</button>
         <ajax-form v-if="showCreateNewTaskForm" :handle-parsing="handleParsingCreateNewTask"
@@ -40,13 +56,7 @@
           </div>
           <ajax-button :syncing="createNewTaskSyncing" class="btn btn-primary">Save</ajax-button>
         </ajax-form>
-        <ul>
-          <li v-for="task in tasks" style="list-style: none;" :class="task.completed ? 'completed' : ''">
-            <input type="checkbox" name="" id="" :data-row-id="task.id" :data-row-completed="task.completed"
-              :checked="task.completed" @click="toggleState($event)">
-            {{task.description}}
-          </li>
-        </ul>
+
       </div>
     </div>
 

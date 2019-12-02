@@ -63,6 +63,11 @@ parasails.registerPage('tl-index', {
     toggleState: async function(element){
       console.log(element.target.dataset.rowId)
       await Cloud.updateTask.with({id: element.target.dataset.rowId})
+    },
+    deleteTask: async function(id){
+      $("li[data-task-id='" + id +"']").attr('style', 'display: none');
+      await Cloud.deleteTask.with({id: id})
+      this.getTodoListTasks(this.selectedTodoList)
     }
   }
 });
